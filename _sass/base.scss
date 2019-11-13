@@ -1,10 +1,25 @@
+@import "highlight";
 
 $font-family: Consolas, Monaco, "Microsoft Yahei", "微软雅黑", STXihei, "华文细黑", sans-serif;
 
-head {
-    font-family: $font-family;
-}
-
 body {
     font-family: $font-family;
+    font-size: 18px;
+}
+
+header h1 {
+    font-size: 40px;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+h2 {
+    font-size: 22px;
+}
+
+h3 {
+    font-size: 20px;
 }
