@@ -1,25 +1,104 @@
 @import "highlight";
 
+// color
+$color-background: #0E0E0E;
+$color-foreground: #C5C5C5;
+$color-header: #996B21;
+$color-blockquote: #858585;
+$color-border: #A5A5A5;
+
 $font-family: Consolas, Monaco, "Microsoft Yahei", "微软雅黑", STXihei, "华文细黑", sans-serif;
 
 body {
+    border: 0;
+    margin: 0;
+    background: $color-background;
+    color: $color-foreground;
     font-family: $font-family;
     font-size: 18px;
 }
 
-header h1 {
-    font-size: 40px;
+header {
+    padding: 20px;
+    margin: 0 0 40px 0;
+    border-bottom: 1px dashed $color-border;
+
+    h1 {
+        font-weight: bold;
+        font-size: 40px;
+        line-height: 1.5;
+    }
 }
 
-h1 {
-    font-weight: bold;
-    font-size: 24px;
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    color: $color-header;
 }
 
-h2 {
-    font-size: 22px;
+#content {
+    width: 100%;
+    -webkit-font-smoothing: antialiased;
+
+    line-height: 1.4;
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+
+    h4 {
+        font-size: 18px;
+    }
+
+    h5 {
+        font-size: 16px;
+    }
+
+    h6 {
+        font-size: 16px;
+    }
 }
 
-h3 {
-    font-size: 20px;
+blockquote {
+    color: $color-blockquote;
+    padding-left: 10px;
+    border-left: 1px dotted $color-border;
+}
+
+figure.highlight {
+    margin: 0;
+}
+
+.highlight {
+    > pre {
+        font-size: 16px;
+        border: 1px solid $color-border;
+        border-radius: 2px;
+        text-wrap: normal;
+        padding: 5px 10px;
+        overflow: auto;
+        overflow-y: hidden;
+    }
+}
+
+section {
+    display: block;
+    margin: 0 0 20px 0;
+
+    img {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
 }
