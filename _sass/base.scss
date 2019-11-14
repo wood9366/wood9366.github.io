@@ -5,7 +5,9 @@ $color-background: #0E0E0E;
 $color-foreground: #C5C5C5;
 $color-header: #996B21;
 $color-blockquote: #858585;
-$color-border: #A5A5A5;
+$color-border: rgba(255, 255, 255, 0.15);
+$color-line: #A5A5A5;
+$color-keyword: #aa759f;
 
 $font-family: Consolas, Monaco, "Microsoft Yahei", "微软雅黑", STXihei, "华文细黑", sans-serif;
 
@@ -21,7 +23,7 @@ body {
 header {
     padding: 20px;
     margin: 0 0 40px 0;
-    border-bottom: 1px dashed $color-border;
+    border-bottom: 1px dashed $color-line;
 
     h1 {
         font-weight: bold;
@@ -42,38 +44,47 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.4;
 
     h1 {
-        font-size: 24px;
+        font-size: 30px;
     }
 
     h2 {
-        font-size: 22px;
+        font-size: 24px;
     }
 
     h3 {
-        font-size: 20px;
-    }
-
-    h4 {
         font-size: 18px;
     }
 
-    h5 {
+    h4 {
         font-size: 16px;
     }
 
+    h5 {
+        font-size: 14px;
+    }
+
     h6 {
-        font-size: 16px;
+        font-size: 12px;
     }
 }
 
 blockquote {
     color: $color-blockquote;
     padding-left: 10px;
-    border-left: 1px dotted $color-border;
+    border-left: 1px dotted $color-line;
 }
 
 figure.highlight {
     margin: 0;
+}
+
+code.highlighter-rouge {
+  background: rgba(0,0,0,0.9);
+  border: 1px solid $color-border;
+  padding: 0px 3px;
+  margin: 0px -3px;
+  color: $color-keyword;
+  border-radius: 2px;
 }
 
 .highlight {
