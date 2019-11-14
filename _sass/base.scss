@@ -89,6 +89,7 @@ code.highlighter-rouge {
 
 .highlight {
     > pre {
+        background: rgba(0, 0, 0, 0.9);
         font-size: 16px;
         border: 1px solid $color-border;
         border-radius: 2px;
@@ -96,6 +97,11 @@ code.highlighter-rouge {
         padding: 5px 10px;
         overflow: auto;
         overflow-y: hidden;
+
+        table {
+            background: rgba(0, 0, 0, 0.9);
+            border: 0px;
+        }
     }
 }
 
@@ -112,4 +118,29 @@ section {
 .container {
     width: 90%;
     margin: 0 auto;
+}
+
+table {
+    background: #4440547F;
+    width: 100%;
+    margin: 0 0 20px 0;
+    border: 1px solid $color-border;
+    border-radius: 2px;
+}
+
+th {
+    text-align: left;
+    border-bottom: 1px dashed $color-border;
+    padding: 5px 10px;
+}
+
+td {
+    padding: 5px 10px;
+}
+
+hr {
+    height: 0;
+    border: 0;
+    border-bottom: 1px dashed $color-line;
+    color: $color-line;
 }
