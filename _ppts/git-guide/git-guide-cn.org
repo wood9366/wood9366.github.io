@@ -1,0 +1,316 @@
+#+TITLE: Git使用
+#+AUTHOR: 李阳
+#+DATE: 2019.12.5
+#+EMAIL: 7325560@qq.com
+
+#+REVEAL_THEME: moon
+#+OPTIONS: num:nil
+#+OPTIONS: toc:nil
+#+OPTIONS: ^:nil
+#+OPTIONS: reveal_single_file:t
+#+REVEAL_PLUGINS: (highlight)
+#+REVEAL_EXTRA_CSS: ./data/custom.css
+
+* 开始
+** 有问题随时提问
+
+* 
+#+ATTR_HTML: :class icon
+[[./data/git-icon.png]]
+
+* 版本控制系统
+Version Control System (VCS)
+
+* 常用的VCS
+Git
+
+SVN (Subversion)
+
+Mercurial (Hg)
+
+CVS
+
+Perfoce
+
+* =/ɡɪt/=
+  
+* Git其实是命令行工具
+
+* GUI
+** /TortoiseGit/
+** /SourceTree/
+
+* 用途
+** 记录目录中文件的变化
+** 协调多人工作
+
+* 如何记录变化？
+** 工作区 (workspace)
+*** 本地目录
+
+** 提交 (commit)
+*** 提交 = 目录快照
+*** 工作区 ~ 提交
+
+** 仓库 (repository)
+*** 存储所有提交
+*** /.git/
+    
+** 分支 (branch)
+*** 提交拥有唯一的HASH(40位)
+*** 提交会记录父提交HASH
+*** 分支只要记录最后的提交
+*** 分支 = 最后提交HASH的文件
+
+** 多分支
+发布分支
+
+开发分支
+
+bug分支
+    
+** 合并 (merge)
+*** 合并提交
+拥有两个父提交
+
+* 如何协调工作？
+** 用户 - 中央仓库
+*** 用户 = 本地电脑
+*** 中央仓库 = 服务器
+*** 内部网路通信
+
+** 集中式 (SVN)
+*** 本地和服务器数据管理方式不同
+*** 服务器记录所有历史提交
+*** 本地只保留当前使用数据
+*** 需要有服务器才能使用
+    
+** 分布式 (Git)
+*** 本地和服务器数据管理完全相同
+*** 服务器和本地都记录历史提交
+*** 无服务器本地也可以使用
+
+** 两者区别
+*** 集中式的操作是通过服务器
+提交直接就在服务器上完成
+
+不需要额外的同步操作
+
+*** 分布式的操作是在本地完成
+提交是在本地的仓库完成
+
+需要用推送和拉取来在本地仓库和服务器仓库之间同步数据
+
+** 克隆 (clone)
+*** 复制中央仓库到本地
+
+** 远程分支 - 本地分支
+*** 存储方式相同，都是保存提交HASH的文件
+*** 远程分支来追踪中央仓库中的分支
+*** 本地分支，就是本地的分支
+    
+** 上游分支 (upstream)
+*** 本地分支对应的远程分支，就是它的上游分支
+    
+** 拉取 (pull = fetch + merge)
+*** 从中央仓库同步信息
+*** 合并本地分支和上游分支
+
+** 获取 (fetch)
+*** 从中央仓库同步信息
+新的提交
+
+分支的位置，修改远程分支
+   
+** 拉取 不需要合并
+** 
+#+ATTR_HTML: :class icon
+[[./data/git-pic-pull-no-merge-0.png]]
+
+** 
+#+ATTR_HTML: :class icon
+[[./data/git-pic-pull-no-merge-1.png]]
+
+** 
+#+ATTR_HTML: :class icon
+[[./data/git-pic-pull-no-merge-2.png]]
+
+** 拉取 自动合并
+** 
+#+ATTR_HTML: :class icon
+[[./data/git-pic-pull-merge-0.png]]
+
+** 
+#+ATTR_HTML: :class icon
+[[./data/git-pic-pull-merge-1.png]]
+
+** 
+#+ATTR_HTML: :class icon
+[[./data/git-pic-pull-merge-2.png]]
+
+* 冲突
+** 合并的两个分支中修改的相同的文件
+** 文件不能合并，二进制
+** 文本文件修改同一行
+   
+* 推送 (push)
+** 把本地改动同步到中央仓库
+** 本地分支是上游分支的快进式(fast-forward)提交才允许推送
+** 你上次pull之后没有别人push东西到中央仓库
+
+** 顺利推送
+** 
+#+ATTR_HTML: :class icon
+[[./data/git-pic-push-0.png]]
+** 
+#+ATTR_HTML: :class icon
+[[./data/git-pic-push-1.png]]
+** 
+#+ATTR_HTML: :class icon
+[[./data/git-pic-push-2.png]]
+
+** 推送 - 拉取 - 推送
+** 
+#+ATTR_HTML: :class icon
+[[./data/git-pic-push-no-0.png]]
+** 
+#+ATTR_HTML: :class icon
+[[./data/git-pic-push-no-1.png]]
+** 
+#+ATTR_HTML: :class icon
+[[./data/git-pic-push-no-2.png]]
+** 
+#+ATTR_HTML: :class icon
+[[./data/git-pic-push-no-3.png]]
+   
+* ?
+  
+* ...
+  
+* 忽略列表
+** /.gitignore/
+** /.git/info/exclude/
+  
+* 缓存区 (stage/index)
+** 预提交 = 提交 = 目录快照
+** 
+#+ATTR_HTML: :class icon
+[[./data/git-pic-stage-0.png]]
+** 
+#+ATTR_HTML: :class icon
+[[./data/git-pic-stage-1.png]]
+** 
+#+ATTR_HTML: :class icon
+[[./data/git-pic-stage-2.png]]
+** 
+#+ATTR_HTML: :class icon
+[[./data/git-pic-stage-3.png]]
+
+* 重置 (reset)
+** 移动当前分支头位置
+** 重置工作区，缓存区
+** 
+#+ATTR_HTML: :class icon
+[[./data/git-pic-reset-0.png]]
+** 
+#+ATTR_HTML: :class icon
+[[./data/git-pic-reset-1.png]]
+
+* 重新提交
+** /git commit --amend/
+** /git reset --soft HEAD^/
+
+* (checkout)
+** 切换分支
+** 重置工作区和缓存区
+   
+* 恢复(restore)
+** 新增的指令
+** 用来恢复工作区，缓冲区的数据
+   
+* (cherrypick)
+   
+* (rebase)
+   
+* (stash)
+** 临时记录把工作区的改动
+   
+* 清空(clean)
+** 清除未追踪的文件
+** /-d/ 清除目录
+** /-x/ 清除忽略列表中的文件
+   
+* (revert)
+** 生成指定提交的反提交
+   
+* (reflog)
+** 每次分支头发生变化时会记录
+** /master@{1}/
+
+* ?
+  
+* 深呼吸
+  
+* HEAD
+** 一个特殊的定位文件
+** 如果保存分支名，表示当前在这个指定分支
+** 如果保存提交Hash，当前是头分离(Head Detached)状态
+
+** 头分离
+*** 当前不在任何分支上
+*** 提交后没有分支能追踪到这些提交
+   
+* 数据管理
+** 快照式
+#+REVEAL: split
+#+ATTR_HTML: :class icon
+[[./data/git-pic-snapshot-0.png]]
+
+#+REVEAL: split
+#+ATTR_HTML: :class icon
+[[./data/git-pic-snapshot-1.png]]
+
+** 对象式管理
+*** commit只是对象的一种
+*** 其他对象
+tree 目录
+
+blob 文件
+
+tag 标记
+
+*** 每个对象都拥有唯一的HASH(40位)
+*** /.git/objects/
+*** pull和push就是在同步不同仓库的这些objects
+    
+* /.git/
+** /.git/objects/
+存储对象
+** /.git/log/
+reflog数据，每个分支独立文件
+** /.git/refs/
+分支追踪，每个分支独立文件
+
+remotes下为远程分支
+** /.git/config/
+仓库配置
+** /.git/hook/
+钩子脚本
+
+* 配置
+** 全局 用户 仓库
+   
+* ?
+
+* 多个中央仓库
+
+* 指令
+
+** 真的需要吗？
+   
+* 资料
+** Reference https://git-scm.com/doc
+** ProGit
+** Git权威指南
+
+* 谢谢

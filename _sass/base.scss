@@ -25,6 +25,26 @@ header {
     margin: 0 0 40px 0;
     border-bottom: 1px dashed $color-line;
 
+    .title a {
+	text-decoration: none;
+
+	&:link, &:visited, &:hover, &:active {
+	    color: $color-header;
+	}
+    }
+
+    nav a {
+	text-decoration: none;
+
+	&:link, &:hover, &:active {
+	    color: $color-header;
+	}
+
+	&:visited {
+	    color: $color-keyword;
+	}
+    }
+
     h1 {
         font-weight: bold;
         font-size: 40px;
@@ -35,6 +55,16 @@ header {
 h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
     color: $color-header;
+}
+
+a {
+    &:link, &:hover, &:active {
+	color: $color-header;
+    }
+
+    &:visited {
+	color: $color-keyword;
+    }
 }
 
 #content {

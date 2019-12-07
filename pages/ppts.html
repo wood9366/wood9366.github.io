@@ -1,0 +1,10 @@
+---
+layout: default
+---
+
+{% for file in site.static_files %}
+{% if file.path contains "/ppts" and file.extname == ".html" %}
+<a href="{{ file.path }}">{{ site.data.ppts[file.basename].name | default: file.basename }}</a>
+{% endif %}
+{% endfor %}
+
