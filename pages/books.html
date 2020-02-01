@@ -1,0 +1,23 @@
+---
+layout: default
+---
+
+已读
+<ul class="books">
+  {% assign books = site.data.books | sort: "suggestion" | reverse %}
+  {% for book in books %}
+    {% if book.progress == 9 %}
+  <li>{{ book.name }}</li>
+    {% endif %}
+  {% endfor %}
+</ul>
+
+未读
+<ul class="books">
+  {% assign books = site.data.books | sort: "priority" | reverse %}
+  {% for book in books %}
+    {% if book.progress != 9 %}
+  <li>[{{ book.progress }}] {{ book.name }}</li>
+    {% endif %}
+  {% endfor %}
+</ul>
