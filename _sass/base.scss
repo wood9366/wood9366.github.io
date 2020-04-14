@@ -178,3 +178,11 @@ hr {
 ul.books {
     list-style: none;
 }
+
+.cards {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto;
+    grid-gap: 10px;
+    padding: 10px;
+}
