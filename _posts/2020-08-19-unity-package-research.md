@@ -1,5 +1,11 @@
-# Unity 包管理研究笔记
+---
+layout: post
+title: Unity包管理研究笔记
+tag: unity package
+category: unity
+---
 
+# Unity 包管理研究笔记
 ## 包服务器
 使用 npm 的包管理系统
 
