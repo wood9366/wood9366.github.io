@@ -7,6 +7,62 @@
 
 使用docker部署verdaccio服务器
 
+### 配置
+```yaml
+...
+auth:
+  htpasswd:
+    file: /verdaccio/storage/htpasswd
+    # Maximum amount of users allowed to register, defaults to "+infinity".
+    # You can set this to -1 to disable registration.
+    max_users: -1
+...
+packages:
+  '@*/*':
+    # scoped packages
+    access: $all
+    publish: $authenticated
+    unpublish: $authenticated
+    # proxy: npmjs
+
+  '**':
+    # allow all users (including non-authenticated users) to read and
+    # publish all packages
+    #
+    # you can specify usernames/groupnames (depending on your auth plugin)
+    # and three keywords: "$all", "$anonymous", "$authenticated"
+    access: $all
+
+    # allow all known users to publish/publish packages
+    # (anyone can register by default, remember?)
+    publish: $authenticated
+    unpublish: $authenticated
+...
+```
+
+#### 包管理
+权限有三种：
+- *access*，访问
+- *publish*，发布
+- *unpublish*，删除
+
+可使用的组
+- *all*，所有人
+- *authenticaten*，登录的人
+- *anonymous*，匿名用户
+
+#### 用户管理
+`max_users`可以设置支持最大用户数，默认（不设置）为无限用户
+
+客户端可以使用`npm login`来注册用户
+
+`max_users`设置为*-1*，关闭用户功能
+
+可以使用htpasswd命令来管理用户
+
+- 添加用户，`htpasswd <passwd-file> <user-name>`，根据提示输入密码
+- 删除用户，`htpasswd -D <passwd-file> <user-name>`
+
 ## 项目 manifest
 位置： /<ProjectDir>/Packages/manifest.json/
 
@@ -139,6 +195,8 @@ unity 更新和发布的版本
 标记包的 tag
 
 ### 上传包
-- npm login
-- npm publish
+要先登录npm的用户
 
+使用`npm login --registry http://<npm-repo>:4873`，来注册用户
+
+使用`npm publish --registry http://<npm-repo>:4873`，来发布包
